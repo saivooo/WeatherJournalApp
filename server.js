@@ -23,7 +23,6 @@ app.use(express.static('website'));
 
 
 // Setup Server
-
 //initialize the port you want to run on
 const port = 8000;
 //Set your variable named server, and pass the listen method with two arguments port and listening.
@@ -39,10 +38,13 @@ app.post('/addWeatherData', addWeatherData);
 
 function addWeatherData (req, res){
     const newEntry = {
-        temperature: req.body.temperature,
-        date: req.body.date
+        temperature: req.body.temp,
+        date: req.body.newDate,
+        mood: req.body.currentFeelings,
+        key: req.body.apiKey
     }
     data.push(newEntry);
+    // projectData.push(data);
     console.log(data);
 }
 
