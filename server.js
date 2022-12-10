@@ -28,5 +28,21 @@ app.use(express.static('website'));
 const port = 8000;
 //Set your variable named server, and pass the listen method with two arguments port and listening.
 const server = app.listen(port, listening =>{console.log(`Running on localhost: ${port}`)});
-//
+
+app.get('/all', function(req, res){
+    res.send(projectData);
+})
+
+const data = [];
+
+app.post('/addWeatherData', addWeatherData);
+
+function addWeatherData (req, res){
+    const newEntry = {
+        temperature: req.body.temperature,
+        date: req.body.date
+    }
+    data.push(newEntry);
+    console.log(data);
+}
 
