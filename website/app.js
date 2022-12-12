@@ -4,7 +4,7 @@ const latLongUrl = "http://api.openweathermap.org/geo/1.0/zip?zip=";
 const tempUrl = "https://api.openweathermap.org/data/2.5/weather?lat=";
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
+let newDate = (d.getMonth()+1) + "." + d.getDate() + "." + d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
 const apiKey = "e5a0c1dddb993311e6abe63160bb80b5&units=imperial";
@@ -45,11 +45,11 @@ const updateUI = async () => {
     try {
         const allData = await req.json();
         console.log(allData);
-        document.getElementById("date").innerHTML = `Date: ${allData[allData.length - 1].date
+        document.getElementById("date").innerHTML = `Date: ${allData.date
             }`;
-        document.getElementById("temp").innerHTML = `Temperature: ${Math.round(allData[allData.length - 1].temperature)
+        document.getElementById("temp").innerHTML = `Temperature: ${Math.round(allData.temperature)
             } degrees`;
-        document.getElementById("content").innerHTML = `Current Mood: ${allData[allData.length - 1].mood
+        document.getElementById("content").innerHTML = `Current Mood: ${allData.mood
             }`;
     } catch (error) {
         console.log("error", error);
